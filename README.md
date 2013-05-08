@@ -12,3 +12,4 @@ Compare which option is the fastest:
 2. `calloc`
 3. `arma::zeros`
 4. `arma::mat` followed by a loop
+5. `arma::mat` followed by a call to `mat.zeros`

@@ -25,6 +25,8 @@ double benchmark_malloc_memset (const unsigned n) {
 	memset(matrix, 0, bytes);
 	sw.stop();
 
+	free(matrix);
+
 	return sw.ns();
 }
 
@@ -38,6 +40,8 @@ double benchmark_calloc (const unsigned n) {
 	sw.start();
 	T * matrix = (T*) calloc(nn, sizeof(T));
 	sw.stop();
+
+	free(matrix);
 
 	return sw.ns();
 }
@@ -69,6 +73,17 @@ double benchmark_arma_mat_for (const unsigned n) {
 	return sw.ns();
 }
 
+template<typename T>
+double benchmark_arma_mat_zeros (const unsigned n) {
+	stopwatch sw;
+	sw.start();
+	Mat<T> matrix(n,n);
+	matrix.zeros();
+	sw.stop();
+
+	return sw.ns();
+}
+
 
 
 int main (int, char * argv[]) {
@@ -90,6 +105,9 @@ int main (int, char * argv[]) {
 
 	clog << ":: arma::mat + loop ::" << endl;
 	cout << benchmark_arma_mat_for<double>(n) << endl;
+
+	clog << ":: arma::mat + mat.zeros ::" << endl;
+	cout << benchmark_arma_mat_zeros<double>(n) << endl;
 
 	return 0;
 }
