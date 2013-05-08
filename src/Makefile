@@ -26,10 +26,6 @@ debug: $(EXECS)
 
 $(foreach exec,$(EXECS),$(eval $(call make-exec,$(exec))))
 
-test: all
-	@echo "::TESTING::"
-	@for f in $(TESTS); do (./$${f} && echo "  TEST  $$f  OK") || echo "  TEST  $$f  FAIL"; done
-
 clean:
-	$(RM) $(TESTS)
-	$(RM) $(TESTS:%=%.oo)
+	$(RM) $(EXECS)
+	$(RM) $(EXECS:%=%.oo)
