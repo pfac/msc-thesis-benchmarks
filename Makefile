@@ -2,12 +2,18 @@ BUILD_DIR ?= build
 BUILD_DIR_MAKEFILE ?= Makefile.build
 BUILD_TYPE ?= default
 
-benchmarks: zeros
+benchmarks: zeros lt-zeros
 
 zeros: $(BUILD_TYPE)
 	@for benchmark in malloc-memset calloc arma-zeros mat-zeros mat-loop mat-loop-omp; \
 	do \
-		$(BUILD_DIR)/$(BUILD_TYPE)/bin/zeros-$${benchmark}; \
+		$(BUILD_DIR)/$(BUILD_TYPE)/bin/$@-$${benchmark}; \
+	done;
+
+lt-zeros: $(BUILD_TYPE)
+	@for benchmark in mat-loop-omp; \
+	do \
+		$(BUILD_DIR)/$(BUILD_TYPE)/bin/$@-$${benchmark}; \
 	done;
 
 $(BUILD_TYPE): $(BUILD_DIR) $(BUILD_DIR)/Makefile
