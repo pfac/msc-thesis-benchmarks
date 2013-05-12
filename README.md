@@ -1,4 +1,4 @@
-:qMy MScThesis Benchmarks
+My MScThesis Benchmarks
 =======================
 
 A small collection of benchmarks with the goal of answering some performance questions for my MSc Thesis.

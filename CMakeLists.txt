@@ -14,6 +14,8 @@ if (UNIX)
 	endif()
 endif()
 
+find_package(OpenMP)
+
 
 include_directories(include ${ARMADILLO_INCLUDE_DIRS})
 
