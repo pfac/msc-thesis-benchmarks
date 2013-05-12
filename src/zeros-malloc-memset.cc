@@ -2,6 +2,10 @@
 #include <iostream>
 	using std::cout;
 
+// c std headers
+#include <stdlib.h>
+#include <string.h>
+
 // other headers
 #include <cuk/stopwatch>
 	using cuk::stopwatch;
@@ -26,3 +30,4 @@ int main () {
 
 	return 0;
 }
+

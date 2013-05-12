@@ -1,0 +1,6 @@
+cmake-default: default
+	cd $< && make
+
+default:
+	mkdir -p $@ && cd $@ && cmake ../.. || $(RM) -r $@
+
